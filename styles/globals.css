@@ -1,4 +1,44 @@
-:root {
+@import url("https://rsms.me/inter/inter.css");
+html {
+  font-family: "Inter", "Work Sans", "Helvetica Neue", Roboto, sans-serif;
+}
+@supports (font-variation-settings: normal) {
+  html {
+    font-family: "Inter var", "Work Sans", "Helvetica Neue", Roboto, sans-serif;
+  }
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  body {
+    @apply bg-gray-100;
+  }
+
+  h1 {
+    @apply text-4xl font-normal lg:text-5xl;
+  }
+
+  h2 {
+    @apply text-3xl font-normal text-gray-800 lg:text-4xl;
+  }
+
+  h3 {
+    @apply text-xl font-normal text-gray-600 lg:text-3xl;
+  }
+
+  h4 {
+    @apply text-lg lg:text-2xl;
+  }
+
+  strong {
+    @apply font-semibold;
+  }
+}
+
+/* :root {
   --max-width: 1100px;
   --border-radius: 12px;
   --font-mono: ui-monospace, Menlo, Monaco, 'Cascadia Mono', 'Segoe UI Mono',
@@ -104,4 +144,4 @@ a {
   html {
     color-scheme: dark;
   }
-}
+} */
