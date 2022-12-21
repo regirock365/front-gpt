@@ -1,5 +1,5 @@
+import { Github } from "@styled-icons/bootstrap";
 import Head from "next/head";
-import { Github } from "styled-icons/bootstrap";
 
 export default function Home() {
   return (
