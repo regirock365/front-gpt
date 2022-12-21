@@ -126,6 +126,56 @@ export type FrontSearchMessagesReturn = {
   ];
 };
 
+export type FrontSearchCommentsReturn = {
+  _links: {
+    self: string;
+  };
+  _results: [
+    {
+      _links: {
+        self: string;
+        related: {
+          conversations: string;
+          mentions: string;
+        };
+      };
+      id: string;
+      author: {
+        _links: {
+          self: string;
+          related: {
+            inboxes: string;
+            conversations: string;
+          };
+        };
+        id: string;
+        email: string;
+        username: string;
+        first_name: string;
+        last_name: string;
+        is_admin: boolean;
+        is_available: boolean;
+        is_blocked: boolean;
+      };
+      body: string;
+      posted_at: number;
+      attachments: [
+        {
+          id: string;
+          filename: string;
+          url: string;
+          content_type: string;
+          size: number;
+          metadata: {
+            is_inline: boolean;
+            cid: string;
+          };
+        }
+      ];
+    }
+  ];
+};
+
 export type FrontComment = {
   _links: {
     self: string;
