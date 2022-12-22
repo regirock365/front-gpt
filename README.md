@@ -10,4 +10,4 @@ Any text after "gpt-response" is used as an instruction or consideration in gene
 
 You will need to set the environment variables `FRONT_API_TOKEN`, `FRONT_API_SECRET` and `OPENAI_API_KEY`.
 
-If you find that you are unable to successfully request the comments in the conversation, make sure you have check the "Allow access to my individual resources via the API" setting for the relevant user. This issue took me a while to diagnose, so hopefully I've saved you some time.
+If you find that you are unable to successfully request the comments in the conversation, make sure you have checked the "Allow access to my individual resources via the API" setting for the relevant user. This issue took me a while to diagnose, so hopefully I've saved you some time.
