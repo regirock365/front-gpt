@@ -18,13 +18,12 @@ export default async (req: NextApiRequest, res: NextApiResponse<Data>) => {
   try {
     // validate the request
     const signature = req.headers["x-front-signature"] as string;
-    const timestamp = req.headers["x-front-timestamp"] as string;
     const hash = crypto
       .createHmac("sha1", process.env.FRONT_API_SECRET ?? "")
-      .update(timestamp + JSON.stringify(req.body))
+      .update(JSON.stringify(req.body))
       .digest("base64");
 
-    if (crypto.timingSafeEqual(Buffer.from(hash), Buffer.from(signature))) {
+    if (!crypto.timingSafeEqual(Buffer.from(hash), Buffer.from(signature))) {
       throw new Error("Bad signature");
     }
 
