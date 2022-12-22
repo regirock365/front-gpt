@@ -176,6 +176,16 @@ export type FrontSearchCommentsReturn = {
   ];
 };
 
+export type FrontWebhookPayload = FrontUnknowWebhookPayload | FrontComment;
+
+export type FrontUnknowWebhookPayload = {
+  _links: {
+    self: string;
+  };
+  id: string;
+  type: "unknown";
+};
+
 export type FrontComment = {
   _links: {
     self: string;

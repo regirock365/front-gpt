@@ -4,6 +4,7 @@ import {
   FrontComment,
   FrontSearchCommentsReturn,
   FrontSearchMessagesReturn,
+  FrontWebhookPayload,
   GPT3Data,
 } from "../../lib/types";
 
@@ -27,7 +28,12 @@ export default async (req: NextApiRequest, res: NextApiResponse<Data>) => {
       throw new Error("Bad signature");
     }
 
-    const body: FrontComment = req.body;
+    const body: FrontWebhookPayload = req.body;
+
+    // make sure it's a comment
+    if (body.type !== "comment") {
+      throw new Error("Not a comment");
+    }
 
     //   get the conversation id
     const conversationId = body.conversation.id;
