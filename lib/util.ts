@@ -37,28 +37,3 @@ export function extractMainEmailText(email: string) {
 
   return maxLengthText?.trim() ?? "";
 }
-
-// a function to handle the boilerplate of adding a comment to a conversation
-export async function addCommentToConversation(
-  conversationId: string,
-  comment: string
-) {
-  return await fetch(
-    `https://api2.frontapp.com/conversations/${encodeURIComponent(
-      conversationId
-    )}/messages`,
-    {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-        Authorization: `Bearer ${process.env.FRONT_API_TOKEN}`,
-      },
-      body: JSON.stringify({
-        body: comment,
-      }),
-    }
-  )
-    .then((response) => response.json())
-    .catch((err) => console.error(err));
-}
