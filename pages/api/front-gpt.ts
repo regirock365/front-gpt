@@ -1,10 +1,13 @@
 import crypto from "crypto";
 import { NextApiRequest, NextApiResponse } from "next";
 import {
+  FrontComment,
+  FrontSearchCommentsReturn,
   FrontSearchMessagesReturn,
   FrontWebhookPayload,
   GPT3Data,
 } from "../../lib/types";
+
 import { extractMainEmailText, sortByFn } from "../../lib/util";
 
 // A Next.js API route for Front webhooks
@@ -12,31 +15,6 @@ import { extractMainEmailText, sortByFn } from "../../lib/util";
 export type Data = { success: boolean };
 
 export default async (req: NextApiRequest, res: NextApiResponse<Data>) => {
-  // a function to handle the boilerplate of adding a comment to a conversation
-  async function addCommentToConversation(
-    conversationId: string,
-    comment: string
-  ) {
-    return await fetch(
-      `https://api2.frontapp.com/conversations/${encodeURIComponent(
-        conversationId
-      )}/messages`,
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-          Authorization: `Bearer ${process.env.FRONT_API_TOKEN}`,
-        },
-        body: JSON.stringify({
-          body: comment,
-        }),
-      }
-    )
-      .then((response) => response.json())
-      .catch((err) => console.error(err));
-  }
-
   try {
     // validate the request
     const signature = req.headers["x-front-signature"] as string;
@@ -172,22 +150,64 @@ export default async (req: NextApiRequest, res: NextApiResponse<Data>) => {
           .join("\n");
 
       // add comment to conversation with the message ids
-      let data = addCommentToConversation(
-        conversationId,
-        `FrontGPT Responded:\n\n${gpt_response}`
-      );
+      let data = await fetch(
+        `https://api2.frontapp.com/conversations/${encodeURIComponent(
+          conversationId
+        )}/comments`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+            Authorization: `Bearer ${process.env.FRONT_API_TOKEN}`,
+          },
+          body: JSON.stringify({
+            body: `FrontGPT Responded:\n\n${gpt_response}`,
+          }),
+        }
+      )
+        .then((response) => response.json())
+        .catch((err) => console.error(err));
     } else if (command === "gpt-hello") {
       // add comment to the conversation introducing the bot
-      let data = addCommentToConversation(
-        conversationId,
-        `Hello! I'm FrontGPT, a bot that uses GPT-3 to help you out in Front. To get started, just type \`gpt-response\` in a comment and I'll get to work!`
-      );
+      let data = await fetch(
+        `https://api2.frontapp.com/conversations/${encodeURIComponent(
+          conversationId
+        )}/comments`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+            Authorization: `Bearer ${process.env.FRONT_API_TOKEN}`,
+          },
+          body: JSON.stringify({
+            body: `Hello! I'm FrontGPT, a bot that uses GPT-3 to help you out in Front. To get started, just type \`gpt-response\` in a comment and I'll get to work!`,
+          }),
+        }
+      )
+        .then((response) => response.json())
+        .catch((err) => console.error(err));
     } else if (command === "gpt-help") {
       // add comment to the conversation with the help message
-      let data = await addCommentToConversation(
-        conversationId,
-        `FrontGPT Help:\n\nTo get started, just type \`gpt-response\` in a comment and I'll get to work!`
-      );
+      let data = await fetch(
+        `https://api2.frontapp.com/conversations/${encodeURIComponent(
+          conversationId
+        )}/comments`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+            Authorization: `Bearer ${process.env.FRONT_API_TOKEN}`,
+          },
+          body: JSON.stringify({
+            body: `FrontGPT Help:\n\nTo get started, just type \`gpt-response\` in a comment and I'll get to work!`,
+          }),
+        }
+      )
+        .then((response) => response.json())
+        .catch((err) => console.error(err));
     }
 
     res.status(200).json({ success: true });
