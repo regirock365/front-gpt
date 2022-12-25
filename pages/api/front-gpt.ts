@@ -290,6 +290,10 @@ export default async (req: NextApiRequest, res: NextApiResponse<Data>) => {
           .then((response) => response.json())
           .catch((err) => console.error(err));
 
+        // @ts-ignore
+        console.log("participants", body.conversation.participants);
+        console.log("recipient", body.conversation.recipient);
+
         // snooze the conversation
         let snooze_data = await fetch(
           `https://api2.frontapp.com/conversations/${encodeURIComponent(
