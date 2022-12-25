@@ -201,7 +201,23 @@ export type FrontComment = {
     id: string;
     subject: string;
     status: string;
-    assignee: any;
+    assignee: {
+      _links: {
+        self: "string";
+        related: {
+          inboxes: "string";
+          conversations: "string";
+        };
+      };
+      id: "string";
+      email: "string";
+      username: "string";
+      first_name: "string";
+      last_name: "string";
+      is_admin: true;
+      is_available: true;
+      is_blocked: true;
+    };
     recipient: {
       _links: object;
       name: string;

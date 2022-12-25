@@ -207,6 +207,110 @@ export default async (req: NextApiRequest, res: NextApiResponse<Data>) => {
       )
         .then((response) => response.json())
         .catch((err) => console.error(err));
+    } else if (command === "gpt-snooze") {
+      // get the snooze time instructions, if any
+      let snoozeTime = comment.replace("gpt-snooze", "").trim();
+
+      // if no snooze time was provided, use the default
+      if (!snoozeTime) {
+        snoozeTime = "in 5 minutes";
+      }
+
+      // transform the snooze time into a date/time string using GPT-3
+      let gpt_data: GPT3Data = await fetch(
+        `https://api.openai.com/v1/completions`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+            Authorization: `Bearer ${process.env.OPENAI_API_KEY}`,
+          },
+          body: JSON.stringify({
+            model: "text-davinci-003",
+            prompt: `The date string for the current date/time is ${new Date().toISOString()}. Given the snooze input "${snoozeTime}", the appropriate string is`,
+            max_tokens: 256,
+            temperature: 0,
+            top_p: 1,
+            frequency_penalty: 0,
+            presence_penalty: 0,
+            stop: ["\n"],
+          }),
+        }
+      )
+        .then((response) => response.json())
+        .catch((err) => console.error(err));
+
+      // parse the response from GPT-3
+      const gpt_response = gpt_data.error
+        ? undefined
+        : gpt_data.choices[0].text
+            .trim() // remove leading/trailing whitespace
+            .replace(/\.$/, "") // remove trailing period
+            .replace(/"/g, ""); // remove quotes
+
+      // abort if there was an error, or the string is not a valid date
+      if (!gpt_response || isNaN(Date.parse(gpt_response))) {
+        let data = await fetch(
+          `https://api2.frontapp.com/conversations/${encodeURIComponent(
+            conversationId
+          )}/comments`,
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              Accept: "application/json",
+              Authorization: `Bearer ${process.env.FRONT_API_TOKEN}`,
+            },
+            body: JSON.stringify({
+              body: `FrontGPT could not parse the snooze time. Please try again.`,
+            }),
+          }
+        )
+          .then((response) => response.json())
+          .catch((err) => console.error(err));
+      } else {
+        // add comment to the conversation with the snooze message
+        let data = await fetch(
+          `https://api2.frontapp.com/conversations/${encodeURIComponent(
+            conversationId
+          )}/comments`,
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              Accept: "application/json",
+              Authorization: `Bearer ${process.env.FRONT_API_TOKEN}`,
+            },
+            body: JSON.stringify({
+              body: `FrontGPT will snooze this conversation until ${gpt_response}.`,
+            }),
+          }
+        )
+          .then((response) => response.json())
+          .catch((err) => console.error(err));
+
+        // snooze the conversation
+        let snooze_data = await fetch(
+          `https://api2.frontapp.com/conversations/${encodeURIComponent(
+            conversationId
+          )}/reminders`,
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              Accept: "application/json",
+              Authorization: `Bearer ${process.env.FRONT_API_TOKEN}`,
+            },
+            body: JSON.stringify({
+              teammate_id: body.conversation.assignee.id,
+              scheduled_at: gpt_response,
+            }),
+          }
+        )
+          .then((response) => response.json())
+          .catch((err) => console.error(err));
+      }
     }
 
     res.status(200).json({ success: true });
