@@ -1,8 +1,6 @@
 import crypto from "crypto";
 import { NextApiRequest, NextApiResponse } from "next";
 import {
-  FrontComment,
-  FrontSearchCommentsReturn,
   FrontSearchMessagesReturn,
   FrontWebhookPayload,
   GPT3Data,
@@ -43,6 +41,7 @@ export default async (req: NextApiRequest, res: NextApiResponse<Data>) => {
     const comment: string = body.target.data.body;
     const command = comment.split(" ")[0];
 
+    console.log("posted_at", body.target.data.posted_at);
     console.log("command", command);
 
     if (command === "gpt-response") {
