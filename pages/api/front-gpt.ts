@@ -305,7 +305,7 @@ export default async (req: NextApiRequest, res: NextApiResponse<Data>) => {
             conversationId
           )}/reminders`,
           {
-            method: "POST",
+            method: "PATCH",
             headers: {
               "Content-Type": "application/json",
               Accept: "application/json",
