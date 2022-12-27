@@ -4,19 +4,6 @@ import Head from "next/head";
 export default function Home() {
   return (
     <>
-      <Head>
-        <title>
-          FrontGPT | Using GPT-3 to help you write draft responses and more in
-          Front
-        </title>
-        <meta
-          name="description"
-          content="Using GPT-3 to help you draft responses and more in Front"
-        />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/favicon.svg" />
-      </Head>
-
       <header className="flex justify-between">
         <div className="flex p-2 items-center justify-center">
           <a
@@ -44,7 +31,7 @@ export default function Home() {
           <img src="/favicon.svg" alt="" className="h-12 md:h-14" />
         </h1>
         <p className="text-2xl mt-2 text-gray-600 font-medium max-w-xl text-center">
-          Using GPT-3 to help you write draft responses and more in Front
+          Your GPT-3 Powered Assistant in Front
         </p>
         <div className="flex mt-8 items-center justify-center gap-2">
           <a
