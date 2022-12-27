@@ -25,7 +25,7 @@ export default function Home() {
         <div />
       </header>
 
-      <main className="flex flex-1 flex-col items-center justify-center py-24 px-6 sm:px-12 md:py-48 md:px-24 lg:px-48">
+      <main className="flex flex-1 flex-col items-center justify-start py-24 px-6 sm:px-12 md:py-48 md:px-24 lg:px-48">
         <h1 className="flex items-center justify-center gap-1 text-6xl md:text-7xl">
           FrontGPT
           <img src="/favicon.svg" alt="" className="h-12 md:h-14" />
