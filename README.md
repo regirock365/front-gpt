@@ -12,9 +12,9 @@ The endpoint responds to a few commands:
 
 ### gpt-snooze
 
-A natural language snooze, the "gpt-snooze" is for those times you would have had to manually snooze the conversation to a date/time not in Fronts default suggestions. Yuck.
+A natural language snooze, the "gpt-snooze" is for those times you would have had to manually snooze the conversation to a date/time not in Fronts default suggestions. Click "Day & Time", scroll to and select the date, select the time, then confirm. Yuck.
 
-Now you can just type "gpt-snooze the first Monday of Feb next year". Which is Feb 6 2023, in case you were wondering.
+Now you can just type "gpt-snooze the first Monday of Feb next year", et voilà. It's Feb 6 2023, in case you were wondering.
 
 ### gpt-hello
 
