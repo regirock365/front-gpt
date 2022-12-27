@@ -224,7 +224,22 @@ export type FrontComment = {
       handle: string;
       role: string;
     };
-    tags: object[];
+    tags: {
+      _links: {
+        self: string;
+        related: {
+          conversations: string;
+          owner: string;
+        };
+      };
+      id: string;
+      name: string;
+      highlight?: string;
+      is_private: boolean;
+      is_visible_in_conversation_lists: boolean;
+      updated_at: number;
+      created_at: number;
+    }[];
     links: any[];
     created_at: number;
     is_private: boolean;

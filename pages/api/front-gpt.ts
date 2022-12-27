@@ -307,7 +307,12 @@ export default async (req: NextApiRequest, res: NextApiResponse<Data>) => {
               Authorization: `Bearer ${process.env.FRONT_API_TOKEN}`,
             },
             body: JSON.stringify({
-              teammate_id: body.conversation.assignee.id,
+              // this is a hack to get the teammate ID
+              // I'm not sure why the API doesn't return it
+              teammate_id:
+                body.conversation.tags[0]._links.related.owner
+                  .match(/\/\w+$/g)?.[0]
+                  .replace(/\//g, "") || "",
               scheduled_at: gpt_response,
             }),
           }
