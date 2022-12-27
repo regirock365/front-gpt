@@ -3,7 +3,7 @@ import Head from "next/head";
 
 export default function Home() {
   return (
-    <>
+    <div className="flex min-h-screen flex-col">
       <header className="flex justify-between">
         <div className="flex items-center justify-center p-2">
           <a
@@ -14,7 +14,7 @@ export default function Home() {
           >
             <img
               src="https://pbs.twimg.com/profile_images/1291555016155619329/9uGuMPfy_400x400.jpg"
-              alt="Law AI"
+              alt="regirock365"
               className="h-12 w-12 rounded-full"
             />
           </a>
@@ -25,13 +25,27 @@ export default function Home() {
         <div />
       </header>
 
-      <main className="flex flex-col items-center justify-center py-24 px-6 sm:px-12 md:py-48 md:px-24 lg:px-48">
+      <main className="flex flex-1 flex-col items-center justify-center py-24 px-6 sm:px-12 md:py-48 md:px-24 lg:px-48">
         <h1 className="flex items-center justify-center gap-1 text-6xl md:text-7xl">
           FrontGPT
           <img src="/favicon.svg" alt="" className="h-12 md:h-14" />
         </h1>
         <p className="mt-2 max-w-xl text-center text-2xl font-medium text-gray-600">
-          Your GPT-3 Powered Assistant in Front
+          Your GPT-3 Powered Assistant in{" "}
+          <a
+            href="https://front.com/"
+            target="_blank"
+            rel="noreferrer"
+            className="text-blue-500 transition hover:underline"
+          >
+            Front
+            <sup className="group">
+              *
+              <span className="absolute bottom-full -right-28 hidden w-56 rounded bg-gray-900 p-1 text-xs text-white shadow group-hover:block">
+                Front is a customer communication platform for teams.
+              </span>
+            </sup>
+          </a>
         </p>
 
         {/* Feature progress */}
@@ -65,6 +79,20 @@ export default function Home() {
 
       {/* <span className="pointer-events-none absolute left-[-20%] -top-24 hidden h-[640px] w-[640px] rounded-full bg-radial-gradient from-front to-front/0 opacity-[.25] lg:inline-flex" /> */}
       {/* <span className="left-1/2 top-64 pointer-events-none -translate-x-1/2 absolute inline-flex h-[640px] w-[640px] scale-50 rounded-full bg-radial-gradient from-front to-front/0 opacity-[.25] sm:scale-75 lg:scale-100" /> */}
-    </>
+
+      <footer>
+        <div className="flex items-center justify-center gap-2 p-4 text-gray-600">
+          <p className="">Made with ❤️ by</p>
+          <a
+            href="https://twitter.com/regirock365"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-blue-500 transition hover:underline"
+          >
+            @regirock365
+          </a>
+        </div>
+      </footer>
+    </div>
   );
 }
