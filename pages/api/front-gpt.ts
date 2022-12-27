@@ -295,6 +295,11 @@ export default async (req: NextApiRequest, res: NextApiResponse<Data>) => {
         console.log("recipient", body.conversation.recipient);
 
         // snooze the conversation
+        const teammate_id =
+          body.conversation.tags[0]._links.related.owner
+            .match(/\/\w+$/g)?.[0]
+            .replace(/\//g, "") || "";
+
         let snooze_data = await fetch(
           `https://api2.frontapp.com/conversations/${encodeURIComponent(
             conversationId
@@ -319,6 +324,9 @@ export default async (req: NextApiRequest, res: NextApiResponse<Data>) => {
         )
           .then((response) => response.json())
           .catch((err) => console.error(err));
+
+        console.log("teammate_id", teammate_id);
+        console.log("snooze_data", snooze_data);
       }
     }
 
