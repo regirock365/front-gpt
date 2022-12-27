@@ -2,9 +2,27 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 ## Webhook Endpoint
 
-`api/front-gpt` is the target webhook you would [point to in a Front rule](https://help.front.com/t/x129yt/how-to-enable-and-use-the-webhooks-integration). I've created a rule that gets triggered whenever a new comment is added with the body starting with "gpt-response". I then send it to the webhook, where the comment is parsed and a response is generated.
+`api/front-gpt` is the target webhook you would [point to in a Front rule](https://help.front.com/t/x129yt/how-to-enable-and-use-the-webhooks-integration). I've created a rule that gets triggered whenever a new comment is added with the body starting with "gpt-".
 
-Any text after "gpt-response" is used as an instruction or consideration in generating the response. So, for example, I could write "gpt-response I'm no longer interested in attending the event, but I want to thank them for considering me".
+The endpoint responds to a few commands:
+
+### gpt-response
+
+"gpt-response" is the command to generate a draft response in a conversation. Any text after "gpt-response" is used as an instruction or consideration in generating the response. So, for example, I could write "gpt-response I'm no longer interested in attending the event, but I want to thank them for considering me".
+
+### gpt-snooze
+
+A natural language snooze, the "gpt-snooze" is for those times you would have had to manually snooze the conversation to a date/time not in Fronts default suggestions. Yuck.
+
+Now you can just type "gpt-snooze the first Monday of Feb next year". Which is Feb 6 2023, in case you were wondering.
+
+### gpt-hello
+
+"gpt-hello" is a command that introduces FrontGPT.
+
+### gpt-help
+
+As the name suggests, "gpt-help" is the help command. It lists all the available commands, with a brief description and example. Simples.
 
 ## Possible Issues
 

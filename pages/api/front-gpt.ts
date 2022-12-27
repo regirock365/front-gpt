@@ -201,7 +201,13 @@ export default async (req: NextApiRequest, res: NextApiResponse<Data>) => {
             Authorization: `Bearer ${process.env.FRONT_API_TOKEN}`,
           },
           body: JSON.stringify({
-            body: `FrontGPT Help:\n\nTo get started, just type \`gpt-response\` in a comment and I'll get to work!`,
+            body: `FrontGPT Help:
+
+Commands:
+\`gpt-response\` - generate a response email e.g. "gpt-response I'm no longer interested in attending, but thank her for the invite"
+\`gpt-snooze\` - snooze the conversation using natural language e.g. "gpt-snooze in 5 minutes"
+\`gpt-hello\` - say hello to FrontGPT
+\`gpt-help\` - show this help message`,
           }),
         }
       )

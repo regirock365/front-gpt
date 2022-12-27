@@ -1,11 +1,11 @@
-import { Github } from "@styled-icons/bootstrap";
+import { Check, CheckSquare, Github, Square } from "@styled-icons/bootstrap";
 import Head from "next/head";
 
 export default function Home() {
   return (
     <>
       <header className="flex justify-between">
-        <div className="flex p-2 items-center justify-center">
+        <div className="flex items-center justify-center p-2">
           <a
             href="https://regirock365.com/"
             className="block rounded-full bg-gradient-to-tr from-yellow-500 via-amber-500 to-red-500 p-0.5"
@@ -25,22 +25,40 @@ export default function Home() {
         <div />
       </header>
 
-      <main className="flex flex-col items-center justify-center py-24 sm:px-12 md:py-48 md:px-24 px-6 lg:px-48">
-        <h1 className="flex items-center gap-1 justify-center text-6xl md:text-7xl">
+      <main className="flex flex-col items-center justify-center py-24 px-6 sm:px-12 md:py-48 md:px-24 lg:px-48">
+        <h1 className="flex items-center justify-center gap-1 text-6xl md:text-7xl">
           FrontGPT
           <img src="/favicon.svg" alt="" className="h-12 md:h-14" />
         </h1>
-        <p className="text-2xl mt-2 text-gray-600 font-medium max-w-xl text-center">
+        <p className="mt-2 max-w-xl text-center text-2xl font-medium text-gray-600">
           Your GPT-3 Powered Assistant in Front
         </p>
-        <div className="flex mt-8 items-center justify-center gap-2">
+
+        {/* Feature progress */}
+        <ul className="mt-8 flex flex-col gap-4 text-xl text-gray-800">
+          <li className="flex items-center gap-2">
+            <CheckSquare className="w-8" />
+            <p className="">Draft Email Responses</p>
+          </li>
+          <li className="flex items-center gap-2">
+            <CheckSquare className="w-8" />
+            <p className="">Natural Language Snooze</p>
+          </li>
+          <li className="flex items-center gap-2 text-gray-400">
+            <Square className="w-8" />
+            <p className="">More Soon...</p>
+          </li>
+        </ul>
+
+        <div className="mt-8 flex items-center justify-center gap-2">
           <a
             href="https://github.com/regirock365/front-gpt"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-gray-700 hover:scale-110 hover:text-black transition rounded-full text-lg"
+            className="flex items-center gap-2 rounded-full text-2xl text-gray-700 transition hover:scale-105 hover:text-black"
           >
-            <Github className="w-12" />
+            See on GitHub
+            <Github className="w-8" />
           </a>
         </div>
       </main>
