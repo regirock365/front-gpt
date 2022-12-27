@@ -318,7 +318,7 @@ export default async (req: NextApiRequest, res: NextApiResponse<Data>) => {
                 body.conversation.tags[0]._links.related.owner
                   .match(/\/\w+$/g)?.[0]
                   .replace(/\//g, "") || "",
-              scheduled_at: gpt_response,
+              scheduled_at: Date.parse(gpt_response) / 1000,
             }),
           }
         )
