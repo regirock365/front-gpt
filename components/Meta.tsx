@@ -16,11 +16,11 @@ const Meta: React.FC<MetaProps> = () => (
     <link rel="icon" href="/favicon.svg" />
     <meta name="theme-color" content="#ff1c5e" />
 
-    {/* <script
+    <script
       defer
-      data-domain="recipe-search-delta.vercel.app"
-      src="https://plausible.io/js/plausible.js"
-    /> */}
+      data-domain="frontgpt.com"
+      src="https://plausible.io/js/script.js"
+    />
 
     {/* <!-- Open Graph / Facebook --> */}
     <meta property="og:type" content="website" />
