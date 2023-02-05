@@ -24,7 +24,7 @@ export function extractMainEmailText(email: string) {
     /^[\s\S]*?(?=^On.*wrote:)/m
   )?.[0];
 
-  // remove text after previous froms
+  // remove text after previous froms: "froms"-less text
   const previousFromsLessText = (previousEmailsLessText + "\nFrom: >")?.match(
     /^[\s\S]*?(?=^From:.*>)/m
   )?.[0];
