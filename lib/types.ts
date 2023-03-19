@@ -17,6 +17,28 @@ export type GPT3Data = {
   }[];
 };
 
+export type GPT4Data = {
+  id: string;
+  object: string;
+  created: number;
+  model: string;
+  error?: string;
+  usage: {
+    completion_tokens: number;
+    prompt_tokens: number;
+    total_tokens: number;
+  };
+  choices: {
+    index: number;
+    // logprobs: any;
+    message: {
+      role: string;
+      content: string;
+    };
+    finish_reason: string;
+  }[];
+};
+
 export type FrontSearchMessagesReturn = {
   _pagination: {
     next: string;
