@@ -8,11 +8,11 @@ const Meta: React.FC<MetaProps> = () => (
     <meta httpEquiv="x-ua-compatible" content="ie=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>FrontGPT | Your GPT-3 Powered Assistant in Front</title>
+    <title>FrontGPT | Your GPT-4 Powered Assistant in Front</title>
 
     {/* <!-- Primary Meta Tags --> */}
     <meta name="title" content="FrontGPT" />
-    <meta name="description" content="Your GPT-3 Powered Assistant in Front" />
+    <meta name="description" content="Your GPT-4 Powered Assistant in Front" />
     <link rel="icon" href="/favicon.svg" />
     <meta name="theme-color" content="#ff1c5e" />
 
@@ -28,7 +28,7 @@ const Meta: React.FC<MetaProps> = () => (
     <meta property="og:title" content="FrontGPT" />
     <meta
       property="og:description"
-      content="Your GPT-3 Powered Assistant in Front"
+      content="Your GPT-4 Powered Assistant in Front"
     />
     <meta
       property="og:image"
@@ -41,7 +41,7 @@ const Meta: React.FC<MetaProps> = () => (
     <meta property="twitter:title" content="FrontGPT" />
     <meta
       property="twitter:description"
-      content="Your GPT-3 Powered Assistant in Front"
+      content="Your GPT-4 Powered Assistant in Front"
     />
     <meta
       property="twitter:image"

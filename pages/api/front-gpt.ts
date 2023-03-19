@@ -106,7 +106,7 @@ export default async (req: NextApiRequest, res: NextApiResponse<Data>) => {
 
       console.log("prompt", prompt);
 
-      //   send the messages to GPT-3
+      //   send the messages to GPT-4
       let gpt_data: GPT4Data = await fetch(
         `https://api.openai.com/v1/chat/completions`,
         {
@@ -136,7 +136,7 @@ export default async (req: NextApiRequest, res: NextApiResponse<Data>) => {
         .then((response) => response.json())
         .catch((err) => console.error(err));
 
-      //   parse the response from GPT-3
+      //   parse the response from GPT-4
       const gpt_response =
         gpt_data.error ??
         gpt_data.choices[0]?.message?.content
@@ -178,7 +178,7 @@ export default async (req: NextApiRequest, res: NextApiResponse<Data>) => {
             Authorization: `Bearer ${process.env.FRONT_API_TOKEN}`,
           },
           body: JSON.stringify({
-            body: `Hello! I'm FrontGPT, a bot that uses GPT-3 to help you out in Front. To get started, just type \`gpt-response\` in a comment and I'll get to work!`,
+            body: `Hello! I'm FrontGPT, a bot that uses GPT-4 to help you out in Front. To get started, just type \`gpt-response\` in a comment and I'll get to work!`,
           }),
         }
       )
@@ -219,7 +219,7 @@ Commands:
         snoozeTime = "in 5 minutes";
       }
 
-      // transform the snooze time into a date/time string using GPT-3
+      // transform the snooze time into a date/time string using GPT-4
       let gpt_data: GPT4Data = await fetch(
         `https://api.openai.com/v1/chat/completions`,
         {
@@ -249,7 +249,7 @@ Commands:
         .then((response) => response.json())
         .catch((err) => console.error(err));
 
-      // parse the response from GPT-3
+      // parse the response from GPT-4
       const gpt_response = gpt_data.error
         ? undefined
         : gpt_data.choices[0]?.message?.content

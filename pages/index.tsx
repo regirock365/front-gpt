@@ -57,7 +57,7 @@ export default function Home() {
           <img src="/favicon.svg" alt="" className="h-12 md:h-20 lg:h-24" />
         </h1>
         <p className="mt-2 text-center text-2xl font-medium text-gray-600 md:text-3xl lg:text-5xl">
-          Your GPT-3 Powered Assistant in{" "}
+          Your GPT-4 Powered Assistant in{" "}
           <a
             href="https://front.com/"
             target="_blank"
