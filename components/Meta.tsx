@@ -32,7 +32,7 @@ const Meta: React.FC<MetaProps> = () => (
     />
     <meta
       property="og:image"
-      content="https://res.cloudinary.com/projectgroceries/image/upload/v1672208359/FrontGPT_Card_Image_bpydxv.png"
+      content="https://res.cloudinary.com/projectgroceries/image/upload/v1679271048/FrontGPT_Card_Image_hxykwo.png"
     />
 
     {/* <!-- Twitter --> */}
@@ -45,7 +45,7 @@ const Meta: React.FC<MetaProps> = () => (
     />
     <meta
       property="twitter:image"
-      content="https://res.cloudinary.com/projectgroceries/image/upload/v1672208359/FrontGPT_Card_Image_bpydxv.png"
+      content="https://res.cloudinary.com/projectgroceries/image/upload/v1679271048/FrontGPT_Card_Image_hxykwo.png"
     />
   </Head>
 );
