@@ -3,7 +3,7 @@ import { NextApiRequest, NextApiResponse } from "next";
 import {
   FrontSearchMessagesReturn,
   FrontWebhookPayload,
-  GPT4Data,
+  GPTChatData,
 } from "../../lib/types";
 
 import { extractMainEmailText, sortByFn } from "../../lib/util";
@@ -107,7 +107,7 @@ export default async (req: NextApiRequest, res: NextApiResponse<Data>) => {
       console.log("prompt", prompt);
 
       //   send the messages to GPT-4
-      let gpt_data: GPT4Data = await fetch(
+      let gpt_data: GPTChatData = await fetch(
         `https://api.openai.com/v1/chat/completions`,
         {
           method: "POST",
@@ -220,7 +220,7 @@ Commands:
       }
 
       // transform the snooze time into a date/time string using GPT-4
-      let gpt_data: GPT4Data = await fetch(
+      let gpt_data: GPTChatData = await fetch(
         `https://api.openai.com/v1/chat/completions`,
         {
           method: "POST",

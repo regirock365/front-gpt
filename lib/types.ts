@@ -1,4 +1,4 @@
-export type GPT3Data = {
+export type GPTComnpletionData = {
   id: string;
   object: string;
   created: number;
@@ -17,7 +17,7 @@ export type GPT3Data = {
   }[];
 };
 
-export type GPT4Data = {
+export type GPTChatData = {
   id: string;
   object: string;
   created: number;
