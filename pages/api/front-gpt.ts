@@ -117,7 +117,7 @@ export default async (req: NextApiRequest, res: NextApiResponse<Data>) => {
             Authorization: `Bearer ${process.env.OPENAI_API_KEY}`,
           },
           body: JSON.stringify({
-            model: "gpt-4",
+            model: "gpt-3.5-turbo",
             messages: [
               {
                 role: "user",
@@ -230,7 +230,7 @@ Commands:
             Authorization: `Bearer ${process.env.OPENAI_API_KEY}`,
           },
           body: JSON.stringify({
-            model: "gpt-4",
+            model: "gpt-3.5-turbo",
             messages: [
               {
                 role: "user",
