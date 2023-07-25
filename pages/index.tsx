@@ -135,7 +135,7 @@ export default function Home() {
 
       <footer>
         <div className="flex items-center justify-center gap-2 p-4 text-gray-600">
-          <p className="">Made with ❤️ by</p>
+          <p className="">Made by</p>
           <a
             href="https://twitter.com/regirock365"
             target="_blank"
